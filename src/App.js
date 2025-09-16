@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <Navbar />
+      <Navbar /> 
       <BoodmoUi />
       <CurrentOffers />
       <SearchSection />
