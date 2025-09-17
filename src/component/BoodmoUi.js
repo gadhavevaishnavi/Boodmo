@@ -3,7 +3,7 @@ import { FaSearch, FaCar } from 'react-icons/fa'
 
 export const BoodmoUi = () => {
   return (
-    <section className="bg-sky-300 py-12 px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+    <section className="bg-sky-300 py-12 px-12 flex flex-col md:flex-row items-center justify-between gap-8">
       {/* Search Box */}
       <div className="flex flex-col gap-4 w-full md:w-1/2">
         {/* Search Bar */}

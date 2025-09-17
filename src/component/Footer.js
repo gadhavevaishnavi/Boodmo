@@ -5,15 +5,46 @@ const Footer = () => {
     return (
         <footer className="bg-white border-t mt-10 text-sm text-gray-600">
             <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+                <div className="bg-blue-700 text-white py-12">
+                    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
 
-                <div className="mb-6 md:mb-0">
-                    <h2 className="text-2xl font-bold">Download</h2>
-                    <h3 className="text-2xl font-bold text-sky-400">Our Mobile App</h3>
-                    <p className="mt-2 text-gray-200">
-                        And get the full boodmo experience on the go
-                    </p>
+                        {/* Left text */}
+                        <div className="mb-6 md:mb-0">
+                            <h2 className="text-2xl font-bold">Download</h2>
+                            <h3 className="text-2xl font-bold text-sky-400">Our Mobile App</h3>
+                            <p className="mt-2 text-gray-200">
+                                And get the full boodmo experience on the go
+                            </p>
+                        </div>
+
+                        {/* App Store & Play Store buttons */}
+                        <div className="flex gap-4">
+                            <a
+                                href="https://itunes.apple.com/in/app/id1154010647"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    alt="App Store"
+                                    className="h-12"
+                                />
+                            </a>
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.boodmo"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Google Play"
+                                    className="h-12"
+                                />
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="grid py-10 grid-cols-1 md:grid-cols-4 gap-8">
 
                     {/* Logo and description */}
                     <div>
