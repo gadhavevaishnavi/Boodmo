@@ -3,6 +3,7 @@ import { FaDatabase, FaFacebook, FaApple } from "react-icons/fa";
 import { CiCircleQuestion } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { BiFingerprint } from "react-icons/bi";
+import { Navbar } from "./Navbar";
 
 export const MyProfile = () => {
   const [toast, setToast] = useState("");
@@ -35,7 +36,7 @@ export const MyProfile = () => {
   };
 
   return (
-    <section className="px-10 py-10 bg-gray-50 min-h-screen relative">
+    <section className="px-10  bg-white min-h-screen relative">
 
       {toast && (
         <div className="fixed top-5 right-5 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-out">
@@ -43,22 +44,12 @@ export const MyProfile = () => {
         </div>
       )}
 
-
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 px-5 py-5 pb-3">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
+      {/* Page Header */}
+     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 px-5 py-5 pb-3">
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
           My <span className="text-sky-500">Profile</span>
         </h1>
-        <div className="flex gap-6 text-gray-600 font-medium flex-wrap">
-          <button className="text-sky-600 border-b-2 border-sky-600 pb-2">
-            My profile
-          </button>
-          <button className="hover:text-sky-600">My orders</button>
-          <button className="hover:text-sky-600">My Wishlists</button>
-          <button className="hover:text-sky-600">Addresses</button>
-          <button className="hover:text-sky-600">Company/GST</button>
-          <button className="hover:text-sky-600">My garage</button>
-          <button className="hover:text-sky-600">My documents</button>
-        </div>
+        <Navbar/>
       </div>
 
       <div>
@@ -75,7 +66,6 @@ export const MyProfile = () => {
           </h2>
 
           <form className="space-y-4">
-
             <div>
               <div className="flex items-center gap-2">
                 <input
@@ -194,20 +184,12 @@ export const MyProfile = () => {
             <h2 className="text-xl font-semibold text-blue-700 mb-4 flex items-center gap-2">
               Profile Connections <CiCircleQuestion />
             </h2>
-            <div className="flex gap-10 text-3xl text-gray-600">
-              <FcGoogle
 
-                className="hover:scale-110 border transition cursor-pointer"
-              />
-              <FaFacebook
-                className="hover:text-blue-600 hover:scale-110 border transition cursor-pointer"
-              />
-              <FaApple
-                className="hover:text-black hover:scale-110 border transition cursor-pointer"
-              />
-              <BiFingerprint
-                className="hover:text-sky-600 hover:scale-110 border transition cursor-pointer"
-              />
+            <div className="flex gap-10 text-3xl text-gray-600">
+              <FcGoogle className="hover:scale-110 border transition cursor-pointer" />
+              <FaFacebook className="hover:text-blue-600 hover:scale-110 border transition cursor-pointer" />
+              <FaApple className="hover:text-black hover:scale-110 border transition cursor-pointer" />
+              <BiFingerprint className="hover:text-sky-600 hover:scale-110 border transition cursor-pointer" />
             </div>
           </div>
         </div>

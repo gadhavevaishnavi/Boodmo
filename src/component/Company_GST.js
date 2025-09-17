@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navbar } from "./Navbar";
 
 export const Company_GST = () => {
   const [address, setAddress] = useState("");
@@ -10,15 +11,7 @@ export const Company_GST = () => {
         <h1 className="text-3xl font-semibold text-blue-950 mb-4 md:mb-0">
           Company <span className="text-sky-500">/GST</span>
         </h1>
-        <div className="flex gap-6 text-gray-600 font-medium flex-wrap">
-          <button className="hover:text-sky-600"> My profile</button>
-          <button className="hover:text-sky-600">My orders</button>
-          <button className="hover:text-sky-600">My Wishlists</button>
-          <button className="hover:text-sky-600 "> Addresses </button>
-          <button className="hover:text-sky-600  text-sky-600 border-b-2 border-sky-600 pb-2">Company/GST</button>
-          <button className="hover:text-sky-600 ">My garage</button>
-          <button className="hover:text-sky-600">My documents</button>
-        </div>
+        <Navbar />
       </div>
 
       {/* Title */}
@@ -33,7 +26,7 @@ export const Company_GST = () => {
           <input
             type="text"
             placeholder="Company name"
-            className="border rounded px-6 py-3 w-full focus:ring-2"
+            className="border rounded px-6 py-3 w-full focus:ring-2 focus:ring-sky-500"
           />
           <div className="flex gap-2">
             <span className="flex items-center border rounded px-6 py-3 bg-gray-100">
@@ -42,7 +35,7 @@ export const Company_GST = () => {
             <input
               type="text"
               placeholder="Mobile"
-              className="border rounded px-6 py-3 w-full focus:ring-2"
+              className="border rounded px-6 py-3 w-full focus:ring-2 focus:ring-sky-500"
             />
           </div>
         </div>
@@ -52,7 +45,7 @@ export const Company_GST = () => {
           <input
             type="text"
             placeholder="GST number"
-            className="border rounded px-6 py-3 w-full focus:ring-2"
+            className="border rounded px-6 py-3 w-full focus:ring-2 focus:ring-sky-500"
           />
           <label className="flex items-center gap-2 mt-2 text-gray-600">
             <input type="checkbox" className="h-4 w-4" />
@@ -79,7 +72,7 @@ export const Company_GST = () => {
           <input
             type="text"
             placeholder="Pincode"
-            className="border rounded px-6 py-3 w-full focus:ring-2"
+            className="border rounded px-6 py-3 w-full focus:ring-2 focus:ring-sky-500"
           />
           <input
             type="text"

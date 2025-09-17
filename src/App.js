@@ -23,8 +23,7 @@ function App() {
     <Router>
      
       <Header />
-      <Navbar />
-
+    
       <Routes>
         {/* Home Page */}
         <Route
