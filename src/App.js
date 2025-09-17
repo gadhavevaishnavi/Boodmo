@@ -15,27 +15,32 @@ import { MyOrder } from './component/MyOrder';
 import { MyWishlist } from './component/MyWishlist';
 import { Document } from './component/Document';
 import { Company_GST } from './component/Company_GST';
+import { Addresses } from "./component/Addresses";
+import Footer from "./component/Footer";
 
 function App() {
   return (
     <Router>
       <Header />
-      <Navbar /> 
+      <Navbar />
       <BoodmoUi />
       <CurrentOffers />
       <SearchSection />
       <BrandTrustAndCarMakers />
-
+      <Footer />
       <Routes>
+
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/garage" element={<Garage />} />
+        <Route path="/document" element={<Document />} />
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/myorder" element={<MyOrder />} />
         <Route path="/mywishlist" element={<MyWishlist />} />
-        <Route path="/document" element={<Document />} />
         <Route path="/company_gst" element={<Company_GST />} />
+        <Route path="/addresses" element={<Addresses />} />
       </Routes>
     </Router>
+
   );
 }
 
