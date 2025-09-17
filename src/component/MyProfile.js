@@ -35,7 +35,7 @@ export const MyProfile = () => {
   };
 
   return (
-    <section className="px-6 py-10 bg-gray-50 min-h-screen relative">
+    <section className="px-10 py-10 bg-gray-50 min-h-screen relative">
 
       {toast && (
         <div className="fixed top-5 right-5 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-out">
@@ -44,7 +44,7 @@ export const MyProfile = () => {
       )}
 
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 px-10 py-10 pb-3">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 px-5 py-5 pb-3">
         <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
           My <span className="text-sky-500">Profile</span>
         </h1>
@@ -160,8 +160,8 @@ export const MyProfile = () => {
         <div className="space-y-6">
           {/* Points */}
           <div className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">
-              Boodmo Points
+            <h2 className="text-xl font-semibold text-blue-700 mb-4 flex items-center gap-2">
+              Profile Connections <CiCircleQuestion />
             </h2>
             <div className="flex items-center justify-between">
               <span className="text-gray-800 font-medium"> <FaDatabase />0 Points</span>
@@ -171,7 +171,7 @@ export const MyProfile = () => {
                 <option>1000 Points (₹0.8/point) - ₹799</option>
                 <option>5000 Points (₹0.7/point) - ₹3,499</option>
                 <option>10000 Points (₹0.6/point) - ₹6,499</option>
-                  <option>30000 Points (₹0.5/point) - ₹15,999</option>
+                <option>30000 Points (₹0.5/point) - ₹15,999</option>
               </select>
               <button
                 type="button"
@@ -191,10 +191,10 @@ export const MyProfile = () => {
 
           {/* Profile Connections */}
           <div className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-blue-700 mb-4 flex items-center hover:underline gap-2">
+            <h2 className="text-xl font-semibold text-blue-700 mb-4 flex items-center gap-2">
               Profile Connections <CiCircleQuestion />
             </h2>
-            <div className="flex gap-10  text-3xl text-gray-600">
+            <div className="flex gap-10 text-3xl text-gray-600">
               <FcGoogle
 
                 className="hover:scale-110 border transition cursor-pointer"
