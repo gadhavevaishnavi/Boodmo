@@ -5,6 +5,14 @@ const Footer = () => {
     return (
         <footer className="bg-white border-t mt-10 text-sm text-gray-600">
             <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+
+                <div className="mb-6 md:mb-0">
+                    <h2 className="text-2xl font-bold">Download</h2>
+                    <h3 className="text-2xl font-bold text-sky-400">Our Mobile App</h3>
+                    <p className="mt-2 text-gray-200">
+                        And get the full boodmo experience on the go
+                    </p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 
                     {/* Logo and description */}
@@ -75,6 +83,7 @@ const Footer = () => {
                     © 2015-2025 Smart Parts Online Pvt. Ltd. (v7.3.7 build 250715.1409)
                 </div>
             </div>
+
         </footer>
     );
 };

@@ -1,19 +1,25 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 export const Document = () => {
-    const navigate = useNavigate();
+  const [documentType, setDocumentType] = useState('All Documents');
+  const [itemsPerPage, setItemsPerPage] = useState('10 per page');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
 
-    const handleDocument = (e) => {
-      e.preventDefault();
-      navigate('/document'); 
-    }
+  const handleApply = () => {
+    console.log({ documentType, itemsPerPage, fromDate, toDate });
+  };
+
+  const handleExport = () => {
+    console.log('Exporting data...');
+  };
 
   return (
-   <div>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 border-b pb-3">
+    <div>
+      {/* Page Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-3">
         <h1 className="text-3xl font-bold text-gray-800 mb-4 md:mb-0">
-         <span className="text-sky-500">Documents</span>
+          <span className="text-sky-500">Documents</span>
         </h1>
         <div className="flex gap-6 text-gray-600 font-medium flex-wrap">
           <button className="hover:text-sky-600"> My profile</button>
@@ -21,12 +27,83 @@ export const Document = () => {
           <button className="hover:text-sky-600">My Wishlists</button>
           <button className="hover:text-sky-600">Addresses</button>
           <button className="hover:text-sky-600">Company/GST</button>
-          <button className="hover:text-sky-600 ">My garage</button>
-          <button className="hover:text-sky-600 text-sky-600 border-b-2 border-sky-600 pb-2">My documents</button>
+          <button className="hover:text-sky-600">My garage</button>
+          <button className="hover:text-sky-600 text-sky-600 border-b-2 border-sky-600 pb-2">
+            My documents
+          </button>
         </div>
-
       </div>
 
+      {/* Filters Section */}
+      <div className="p-4 bg-white rounded-lg shadow-md">
+        <div className="flex flex-wrap items-center gap-4 mb-6">
+          {/* Document Type Dropdown */}
+          <div className="relative">
+            <select
+              className="block w-full bg-white border border-gray-300 hover:border-gray-400 px-6 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              value={documentType}
+              onChange={(e) => setDocumentType(e.target.value)}
+            >
+              <option>All Documents</option>
+              <option>Invoices</option>
+              <option>Credit Notes</option>
+              <option>Debit Notes</option>
+            </select>
+          </div>
+
+          {/* Items per page Dropdown */}
+          <div className="relative">
+            <select
+              className="block w-full bg-white border border-gray-300 hover:border-gray-400 px-6 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              value={itemsPerPage}
+              onChange={(e) => setItemsPerPage(e.target.value)}
+            >
+              <option>10 per page</option>
+              <option>20 per page</option>
+              <option>50 per page</option>
+              <option>100 per page</option>
+            </select>
+          </div>
+
+          {/* From Date Input */}
+          <div className="flex items-center border border-gray-300 rounded shadow">
+            <input
+              type="date"
+              className="px-6 py-2 focus:outline-none"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+            />
+          </div>
+
+          {/* To Date Input */}
+          <div className="flex items-center border border-gray-300 rounded shadow">
+            <input
+              type="date"
+              className="px-6 py-2 focus:outline-none"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+            />
+          </div>
+
+          {/* Apply Button */}
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-10 rounded shadow focus:outline-none focus:shadow-outline"
+            onClick={handleApply}>
+            Apply
+          </button>
+
+          {/* Export Button */}
+          <button
+            className="border border-gray-300 hover:bg-sky-500 hover:text-white text-black py-2 px-6 rounded shadow focus:outline-none focus:shadow-outline ml-auto"
+            onClick={handleExport} >
+            Export
+          </button>
+        </div>
+
+        <div className="bg-gray-100 p-4 text-center text-gray-600 font-bold border-solid rounded">
+          No items found
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
