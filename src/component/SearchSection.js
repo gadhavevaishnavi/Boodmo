@@ -1,17 +1,174 @@
-import React from "react";
-import { FaSearch } from 'react-icons/fa'
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const SearchSection = () => {
+    const [selectedMaker, setSelectedMaker] = useState("");
+    const [selectedModel, setSelectedModel] = useState("");
+    const [selectedYear, setSelectedYear] = useState("");
+    const [models, setModels] = useState([]);
+    const [years, setYears] = useState([]);
+    const [modifications, setModifications] = useState([]);
+
+    // ✅ Full Car Data (Maker → Model → Year → Modifications)
+    const carData = {
+        CHEVROLET: {
+            AVEO: { 2022: ["Base", "Mid"], 2023: ["Top"] },
+            BEAT: { 2022: ["Base", "LS"], 2023: ["LT", "Diesel"] },
+            CAPTIVA: { 2022: ["LT"], 2023: ["LTZ"] },
+            CRUZE: { 2022: ["LT", "LTZ"], 2023: ["LTZ Plus"] },
+            ENJOY: { 2022: ["Base"], 2023: ["Top"] },
+            FORESTER: { 2022: ["2.0 Petrol"], 2023: ["AWD"] },
+            OPTRA: { 2022: ["Base"], 2023: ["Top"] },
+            SAIL: { 2022: ["Base"], 2023: ["Top"] },
+            SPARK: { 2022: ["LS"], 2023: ["LT"] },
+            TAVERA: { 2022: ["Base"], 2023: ["Neo 3"] },
+            TRAILBLAZER: { 2022: ["LT"], 2023: ["LTZ"] },
+        },
+        FIAT: {
+            Linea: { 2022: ["Active", "Emotion"], 2023: ["T-Jet"] },
+            Punto: { 2022: ["Active", "Sports"], 2023: ["Evo"] },
+            Abarth: { 2022: ["Base"], 2023: ["Competizione"] },
+        },
+        FORD: {
+            EcoSport: { 2022: ["Trend", "Titanium"], 2023: ["Thunder"] },
+            Endeavour: { 2022: ["Titanium"], 2023: ["Sport"] },
+            Figo: { 2022: ["Base", "Titanium"], 2023: ["Blu"] },
+            Aspire: { 2022: ["Trend"], 2023: ["Titanium+"] },
+        },
+        HONDA: {
+            City: { 2022: ["SV", "V"], 2023: ["VX", "ZX"] },
+            Civic: { 2022: ["V", "VX"], 2023: ["ZX"] },
+            Amaze: { 2022: ["E", "S"], 2023: ["VX"] },
+            Jazz: { 2022: ["V", "VX"], 2023: ["ZX"] },
+        },
+        HYUNDAI: {
+            i20: { 2022: ["Magna", "Sportz"], 2023: ["Asta"] },
+            Creta: { 2022: ["E", "EX"], 2023: ["SX", "SX(O)"] },
+            Venue: { 2022: ["S", "SX"], 2023: ["N Line"] },
+            Verna: { 2022: ["S", "SX"], 2023: ["SX(O)"] },
+        },
+        KIA: {
+            Seltos: { 2022: ["HTE", "HTK"], 2023: ["GTX", "X-Line"] },
+            Sonet: { 2022: ["HTE", "HTK"], 2023: ["GTX+"] },
+            Carnival: { 2022: ["Premium"], 2023: ["Limousine"] },
+        },
+        MAHINDRA: {
+            XUV300: { 2022: ["W4", "W6"], 2023: ["W8", "W8(O)"] },
+            Scorpio: { 2022: ["S3", "S5"], 2023: ["S11"] },
+            Thar: { 2022: ["AX", "LX"], 2023: ["Diesel", "Petrol"] },
+            Bolero: { 2022: ["B4", "B6"], 2023: ["B8"] },
+        },
+        MARUTI: {
+            Swift: {
+                2022: ["LXI", "VXI"],
+                2023: ["ZXI", "ZXI+"]
+            },
+            Baleno: {
+                2022: ["Delta", "Zeta"],
+                2023: ["Alpha"]
+            },
+            WagonR: {
+                2022: ["LXI", "VXI"],
+                2023: ["ZXI"]
+            },
+            Alto: {
+                2022: ["Std", "LXI"],
+                2023: ["VXI+"]
+            },
+            Dzire: {
+                2022: ["LXI", "VXI"],
+                2023: ["ZXI"]
+            },
+        },
+        NISSAN: {
+            Magnite: { 2022: ["XE", "XL"], 2023: ["XV Premium"] },
+            Kicks: { 2022: ["XL"], 2023: ["XV"] },
+            Sunny: { 2022: ["XE", "XL"], 2023: ["XV"] },
+        },
+        RENAULT: {
+            Kwid: { 2022: ["RXE", "RXL"], 2023: ["Climber"] },
+            Triber: { 2022: ["RXE", "RXL"], 2023: ["RXZ"] },
+            Duster: { 2022: ["RXE", "RXL"], 2023: ["RXZ AWD"] },
+        },
+        SKODA: {
+            Octavia: { 2022: ["Style"], 2023: ["L&K"] },
+            Rapid: { 2022: ["Active"], 2023: ["Monte Carlo"] },
+            Kushaq: { 2022: ["Ambition"], 2023: ["Style"] },
+        },
+        TATA: {
+            Nexon: { 2022: ["XE", "XM"], 2023: ["XZ", "XZ+"] },
+            Harrier: { 2022: ["XT", "XZ"], 2023: ["XZ+"] },
+            Safari: { 2022: ["XE", "XM"], 2023: ["XZ+"] },
+            Tiago: { 2022: ["XE", "XM"], 2023: ["XZ+"] },
+        },
+        TOYOTA: {
+            Innova: { 2022: ["GX", "VX"], 2023: ["Crysta", "ZX"] },
+            Fortuner: { 2022: ["2.7 Petrol"], 2023: ["Legender"] },
+            Corolla: { 2022: ["Altis"], 2023: ["Hybrid"] },
+            Glanza: { 2022: ["G"], 2023: ["V"] },
+        },
+        VW: {
+            Polo: { 2022: ["Trendline", "Highline"], 2023: ["GT"] },
+            Vento: { 2022: ["Comfortline"], 2023: ["Highline+"] },
+            Tiguan: { 2022: ["Elegance"], 2023: ["R-Line"] },
+        },
+        AUDI: {
+            A3: { 2022: ["Premium"], 2023: ["Technology"] },
+            A4: { 2022: ["Premium", "Technology"], 2023: ["S Line"] },
+            A5: { 2022: ["Sportback"], 2023: ["S Line"] },
+            A6: { 2022: ["Premium"], 2023: ["Technology"] },
+            A7: { 2022: ["Sportback"], 2023: ["S Line"] },
+            A8: { 2022: ["L"], 2023: ["L Technology"] },
+            Q2: { 2022: ["Premium"], 2023: ["Technology"] },
+            Q3: { 2022: ["Premium Plus"], 2023: ["Technology"] },
+            Q5: { 2022: ["Premium Plus"], 2023: ["Technology"] },
+            Q7: { 2022: ["Premium Plus"], 2023: ["Technology"] },
+            Q8: { 2022: ["Standard"], 2023: ["Technology"] },
+            R8: { 2022: ["V10"], 2023: ["V10 Plus"] },
+            S4: { 2022: ["Standard"], 2023: ["Performance"] },
+            S5: { 2022: ["Sportback"], 2023: ["S Line"] },
+            TT: { 2022: ["Coupe"], 2023: ["Roadster"] },
+        },
+    };
+
+    // ✅ Handle Maker change
+    const handleMakerChange = (e) => {
+        const maker = e.target.value;
+        setSelectedMaker(maker);
+        setModels(maker ? Object.keys(carData[maker]) : []);
+        setSelectedModel("");
+        setSelectedYear("");
+        setYears([]);
+        setModifications([]);
+    };
+
+    // ✅ Handle Model change
+    const handleModelChange = (e) => {
+        const model = e.target.value;
+        setSelectedModel(model);
+        setYears(model ? Object.keys(carData[selectedMaker][model]) : []);
+        setSelectedYear("");
+        setModifications([]);
+    };
+
+    // ✅ Handle Year change
+    const handleYearChange = (e) => {
+        const year = e.target.value;
+        setSelectedYear(year);
+        setModifications(
+            year ? carData[selectedMaker][selectedModel][year] : []
+        );
+    };
+
     return (
         <section className="px-6 py-12 bg-gray-50">
-
+            {/* Title */}
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-4xl font-bold text-gray-800">
                     Search by <span className="text-sky-500">Vehicle</span>
                 </h2>
 
-
-                <div className="flex items-center space-x-2 ">
+                <div className="flex items-center space-x-2">
                     <input
                         type="text"
                         placeholder="Search by number plate..."
@@ -21,117 +178,75 @@ const SearchSection = () => {
                         <FaSearch />
                     </button>
                 </div>
-
             </div>
 
-
+            {/* Dropdowns */}
             <div className="flex flex-col md:flex-row items-center gap-4 bg-blue-900 p-4 rounded-lg shadow-md">
-                <select className="border font-bold border-gray-300 px-4 py-2 focus:ring-2 focus:ring-sky-500">
-                    <option class="font-bold">Select Car Maker</option>
-                    <option >FIAT</option>
-                    <option >FORD</option>
-                    <option>HONDA</option>
-                    <option>HYUNDAI</option>
-                    <option >KIA</option>
-                    <option >MAHINDRA</option>
-                     <option >MARUTI</option>
-                    <option >NISSAN</option>
-                    <option >RENAULT</option>
-                    <option >SKODA</option>
-                    <option >TATA</option>
-                    <option >TOYOTA</option>
-                    <option >VW</option>
-
+                {/* Car Maker */}
+                <select
+                    className="border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-sky-500"
+                    value={selectedMaker}
+                    onChange={handleMakerChange}
+                >
+                    <option value="">Select Car Maker</option>
+                    {Object.keys(carData).map((maker) => (
+                        <option key={maker} value={maker}>
+                            {maker}
+                        </option>
+                    ))}
                 </select>
 
-                <select className="border font-bold border-gray-300 px-4 py-2 focus:ring-2 focus:ring-sky-500">
-                    <option>Select Model Line</option>
+                {/* Model */}
+                <select
+                    className={`border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-sky-500 ${!selectedMaker ? "text-gray-300 cursor-not-allowed" : ""
+                        }`}
+                    value={selectedModel}
+                    onChange={handleModelChange}
+                    disabled={!selectedMaker}
+                >
+                    <option value="">Select Model Line</option>
+                    {models.map((model) => (
+                        <option key={model} value={model}>
+                            {model}
+                        </option>
+                    ))}
                 </select>
 
-                <select className="border font-bold border-gray-300 px-4 py-2 focus:ring-2 focus:ring-sky-500">
-                    <option>Select Year</option>
+                {/* Year */}
+                <select
+                    className={`border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-sky-500 ${!selectedModel ? "text-gray-300 cursor-not-allowed" : ""
+                        }`}
+                    value={selectedYear}
+                    onChange={handleYearChange}
+                    disabled={!selectedModel}
+                >
+                    <option value="">Select Year</option>
+                    {years.map((year) => (
+                        <option key={year} value={year}>
+                            {year}
+                        </option>
+                    ))}
                 </select>
 
-                <select className="border font-bold border-gray-300 px-4 py-2 focus:ring-2 focus:ring-sky-500">
-                    <option>Select Modification</option>
+                {/* Modification */}
+                <select
+                    className={`border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-sky-500 ${!selectedYear ? "text-gray-300 cursor-not-allowed" : ""
+                        }`}
+                    disabled={!selectedYear}
+                >
+                    <option value="">Select Modification</option>
+                    {modifications.map((mod) => (
+                        <option key={mod} value={mod}>
+                            {mod}
+                        </option>
+                    ))}
                 </select>
 
-                <button className="bg-sky-500 font-bold hover:bg-sky-600 text-white px-6 py-2 shadow">
+                {/* Search Button */}
+                <button className="bg-sky-500 font-bold hover:bg-sky-600 text-white px-6 py-2 shadow rounded">
                     Search Parts
                 </button>
             </div>
-
-
-            <div class="py-10" >
-                <h2 className="text-4xl font-bold text-gray-800 mb-6 ">
-                    Search by <span className="text-sky-500">Category</span>
-                </h2>
-
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-                    <div className="p-6 border rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition cursor-pointer">
-                        <img src="https://boodmo.com/media/images/categories/ebba234.svg" />
-                        <p className="font-medium text-gray-700">Maintainance Service parts</p>
-                    </div>
-
-
-                    <div className="p-6 border rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition cursor-pointer">
-                        <img src="https://boodmo.com/media/images/categories/fab8332.svg" />
-                        <p className="font-medium text-gray-700">Filters</p>
-                    </div>
-
-
-                    <div className="p-6 border rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition cursor-pointer">
-                        <img src="https://boodmo.com/media/images/categories/d36974e.svg" />
-                        <p className="font-medium text-gray-700">Windscreen Ceaning System</p>
-                    </div>
-
-                    <div className="p-6 border rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition cursor-pointer">
-                        <img src="https://boodmo.com/media/images/categories/4372565.svg" />
-                        <p className="font-medium text-gray-700">Headlights</p>
-                    </div>
-
-                    <div className="p-6 border rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition cursor-pointer">
-                        <img src="https://boodmo.com/media/images/categories/c009512.svg" />
-                        <p className="font-medium text-gray-700">Lighting</p>
-                    </div>
-
-                </div>
-            </div>
-            <div className="flex justify-center mt-8">
-                <button className="bg-white hover:bg-green-50 text-black px-8 py-3 rounded-lg shadow font-bold border-2 border-gray-500">
-                    Load More
-                </button>
-            </div>
-
-            <div className="mt-12">
-                <h2 className="text-4xl font-bold text-gray-800 mb-8 text-left">
-                    Why Choose <span className="text-sky-500">Aftermarket Products</span>
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-9 text-center">
-                    <div className="p-6 border rounded-xl shadow-md hover:shadow-lg transition">
-                        <img src="" />
-
-                        <h3 className="text-2xl text-left font-semibold text-blue-950 mb-2 ">Original Product</h3>
-                        <p className="text-gray-600">Only reliable parts from trusted Aftermarket brands
-                        </p>
-                    </div>
-
-                    <div className="p-6 border rounded-xl shadow-md hover:shadow-lg transition">
-                        <img src=" " />
-                        <h3 className="text-2xl font-semibold text-blue-950 mb-2 text-left">Affordable Rate</h3>
-                        <p className="text-gray-600">Repairing a damaged vehicle can be expensive. Using the aftermarket products is a good solution if you're on a budget</p>
-                    </div>
-
-                    <div className="p-6 border rounded-xl shadow-md hover:shadow-lg transition">
-                        <h3 className="text-2xl text-left font-semibold text-blue-950 mb-2">Wide Variety</h3>
-                        <p className="text-gray-600">We have something for everyone when it comes to aftermarket products. Just apply the "Aftermarket" filter in the catalogue and check the offers</p>
-                    </div>
-                </div>
-            </div>
-
-
-
         </section>
     );
 };

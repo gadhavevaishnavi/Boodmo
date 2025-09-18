@@ -4,17 +4,16 @@ import { NavLink } from "react-router-dom";
 export const Navbar = () => {
   return (
     <div className="flex justify-between items-center px-10 py-5 pb-3">
-      {/* Left Side (empty for now, can hold logo/title later) */}
       <div></div>
 
-     
+
       <nav className="flex gap-6 text-gray-600 font-medium flex-wrap ml-auto">
         <NavLink
           to="/myprofile"
-          className={({ isActive }) =>
+          className={({ isActive })  =>
             isActive
-              ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              ? "text-sky-600 border-b-2  border-sky-600 pb-2"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           My Profile
@@ -25,7 +24,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           My Orders
@@ -36,7 +35,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           My Wishlists
@@ -47,7 +46,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           Addresses
@@ -58,7 +57,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           Company/GST
@@ -69,7 +68,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           My Garage
@@ -80,7 +79,7 @@ export const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-sky-600 border-b-2 border-sky-600 pb-2"
-              : "hover:text-sky-600"
+              : "hover:text-sky-600 hover:scale-110"
           }
         >
           My Documents

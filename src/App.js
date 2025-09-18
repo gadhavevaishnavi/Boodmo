@@ -3,6 +3,8 @@ import './App.css';
 
 import { Header } from './component/Header';
 import { Navbar } from './component/Navbar';
+import Cart from './component/Cart';
+
 import { BoodmoUi } from './component/BoodmoUi';
 import CurrentOffers from './component/CurrentOffers';
 import SearchSection from "./component/SearchSection";
@@ -20,10 +22,9 @@ import Footer from "./component/Footer";
 
 function App() {
   return (
+
     <Router>
-     
       <Header />
-    
       <Routes>
         {/* Home Page */}
         <Route
@@ -37,8 +38,7 @@ function App() {
             </>
           }
         />
-
-        {/* <Route path="/myaccount" element={<MyAccount />} /> */}
+        <Route path="/cart" element={<Cart />} />
         <Route path="/garage" element={<Garage />} />
         <Route path="/document" element={<Document />} />
         <Route path="/myprofile" element={<MyProfile />} />
@@ -51,7 +51,7 @@ function App() {
       {/* Footer visible on all pages */}
       <Footer />
     </Router>
-  );
+  )
 }
 
 export default App;

@@ -15,13 +15,13 @@ export const MyWishlist = () => {
       {/* Content (unchanged) */}
       <div className="flex flex-col justify-center items-center min-h-[60vh] text-center px-6">
         <h2 className="text-cyan-800 font-semibold text-2xl mb-4">
-          Your Wishlist is Empty
+          No Wishlists Created
         </h2>
         <p className="text-gray-700 mb-6">
-          Save items to your wishlist and find them easily when you come back!
+         Add your first wishlist to create a collection of parts for future use
         </p>
-        <button className="bg-sky-500 hover:bg-sky-600 text-white rounded py-3 px-6 font-semibold">
-          Start Shopping
+        <button className="bg-sky-400 hover:bg-sky-500 text-white rounded py-4 px-6 font-semibold">
+         Add Wishlist now
         </button>
       </div>
     </div>
