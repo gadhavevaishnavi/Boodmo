@@ -19,6 +19,7 @@ import { Document } from './component/Document';
 import { Company_GST } from './component/Company_GST';
 import { Addresses } from "./component/Addresses";
 import Footer from "./component/Footer";
+// import { Sider } from "./component/Sider";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           }
         />
         <Route path="/cart" element={<Cart />} />
+        {/* <Route path="/sider" element={<Sider />} /> */}
         <Route path="/garage" element={<Garage />} />
         <Route path="/document" element={<Document />} />
         <Route path="/myprofile" element={<MyProfile />} />
