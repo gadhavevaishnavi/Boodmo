@@ -13,11 +13,7 @@ const Cart = () => {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="text-4xl font-bold text-blue-700 px-6 py-4">
-        bood<span className="text-cyan-400">mo</span>
-      </div>
-
-      {/* Steps */}
+      
       <div className="relative bg-blue-50 py-10">
         <div className="relative z-10 flex justify-center gap-12">
           {steps.map((step, index) => (
@@ -27,7 +23,6 @@ const Cart = () => {
                 <div className="absolute top-1/2 left-full w-12 h-0.5 bg-blue-300 z-0"></div>
               )}
 
-              {/* Icon (larger now) */}
               <div className="w-14 h-14 flex items-center justify-center bg-gray-200 border-2 border-gray-300 rounded-full text-3xl z-10">
                 {step.icon}
               </div>
@@ -39,10 +34,10 @@ const Cart = () => {
         </div>
       </div>
 
-      {/* Empty Cart Message (unchanged) */}
+
       <div className=" font-semibold my-12">
         <p className="text-lg border-b-2 py-2 text-gray-600 mb-4">Shopping cart is empty</p>
-        <button className="border border-black text-black-600 px-4 py-3 rounded hover:bg-sky-500 hover:text-white transition">
+        <button className="border border-black hover:border-white text-black-600 px-4 py-3 rounded hover:bg-sky-400 hover:text-white transition">
           Continue shopping
         </button>
       </div>

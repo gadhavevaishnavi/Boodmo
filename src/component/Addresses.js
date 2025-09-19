@@ -4,7 +4,7 @@ import { Navbar } from './Navbar'
 export const Addresses = () => {
   return (
     <div className="px-10 py-10">
-         {/* Title + Navbar */}
+   
          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
            <h1 className="text-3xl font-bold text-gray-800">
              My <span className="text-sky-500">Wishlist</span>
@@ -12,7 +12,6 @@ export const Addresses = () => {
            <Navbar />
          </div>
    
-         {/* Content (unchanged) */}
          <div className="flex flex-col justify-center items-center min-h-[60vh] text-center px-6">
            <h2 className="text-cyan-800 font-semibold text-2xl mb-4">
              No Address Added

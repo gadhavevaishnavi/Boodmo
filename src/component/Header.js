@@ -4,6 +4,7 @@ import { FaCar, FaHeart, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import { MdAccountCircle } from "react-icons/md";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import logo from "./logo.png";
+import { Sider } from './Sider'; 
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -17,41 +18,11 @@ export const Header = () => {
     }
   };
 
-  const goToWishlist = () => {
-    navigate("/mywishlist");
-  };
+  const goToWishlist = () => navigate("/mywishlist");
+  const goToCart = () => navigate("/cart");
+  const goToHomePage = () => navigate("/");
 
-  const goToCart = () => {
-    navigate("/cart");
-  };
-
-  const goToHomePage = () => {
-    navigate("/");
-  };
-
-  const isHomePage = location.pathname === "/"; // ✅ check if on home
-
-  // Sidebar menu items
-  const menuItems = [
-    "Search by Vehicle ",
-    "Search by Number Plate",
-    "Brands",
-    "Car Makers",
-    "Contact Us",
-    "Sell Your Car",
-    "FAQ",
-    "Discovery Points",
-    "Boodmo API Solution",
-    "Return Policy",
-    "Disclaimer",
-    "Terms of Use",
-    "Sellers Policy",
-    "Supplier Relations",
-    "Anti-Corruption Policy",
-    "Remove Account",
-    "Become a Vendor",
-    "Logout",
-  ];
+  const isHomePage = location.pathname === "/";
 
   return (
     <div className="w-full bg-white shadow-md px-6 py-4 relative">
@@ -66,7 +37,6 @@ export const Header = () => {
             className="h-[70px] w-[150px] cursor-pointer"
           />
 
-          {/* ✅ Show search bar only when NOT on home */}
           {!isHomePage && (
             <div className="flex bg-gray-100 rounded-lg overflow-hidden shadow-sm text-sm w-[450px] md:w-[600px]">
               <input
@@ -81,7 +51,7 @@ export const Header = () => {
           )}
         </div>
 
-
+        {/* Right: Links & Buttons */}
         <div className="flex items-center gap-6 text-gray-700 font-medium">
 
           <Link
@@ -115,7 +85,7 @@ export const Header = () => {
             <FaShoppingCart className="text-blue-900 text-xl" />
           </button>
 
-          {/* Three dots button opens sidebar */}
+          {/* Three lines menu button */}
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="hover:text-blue-700 text-2xl hover:scale-110"
@@ -126,33 +96,7 @@ export const Header = () => {
       </div>
 
       {/* Sidebar */}
-      <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white shadow-2xl transform transition-transform duration-300 z-50 ${isSidebarOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-      >
-        {/* Sidebar header */}
-        <div className="flex justify-between items-center px-4 py-3 border-b">
-          <h2 className="text-lg font-bold text-gray-700">Menu</h2>
-          <button
-            onClick={() => setIsSidebarOpen(false)}
-            className="text-gray-600 hover:text-red-500"
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* Sidebar menu items */}
-        <ul className="flex flex-col p-4 space-y-3">
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className="cursor-pointer text-gray-700 hover:text-blue-600 font-medium"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Sider isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </div>
   );
 };

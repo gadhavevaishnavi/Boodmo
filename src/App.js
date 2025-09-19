@@ -19,6 +19,8 @@ import { Document } from './component/Document';
 import { Company_GST } from './component/Company_GST';
 import { Addresses } from "./component/Addresses";
 import Footer from "./component/Footer";
+import { Brands } from "./component/Brands";
+import Contact from "./component/Contact";
 // import { Sider } from "./component/Sider";
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
             </>
           }
         />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/brands" element={<Brands />} />
         <Route path="/cart" element={<Cart />} />
         {/* <Route path="/sider" element={<Sider />} /> */}
         <Route path="/garage" element={<Garage />} />

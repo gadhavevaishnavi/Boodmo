@@ -12,17 +12,51 @@ const SearchSection = () => {
 
   const carData = {
     CHEVROLET: {
-      AVEO: { 2022: ["Base", "Mid"], 2023: ["Top"] },
-      BEAT: { 2022: ["Base", "LS"], 2023: ["LT", "Diesel"] },
-    },
-    HONDA: {
-      City: { 2022: ["SV", "V"], 2023: ["VX", "ZX"] },
-      Civic: { 2022: ["V", "VX"], 2023: ["ZX"] },
-    },
-    MARUTI: {
-      Swift: { 2022: ["LXI", "VXI"], 2023: ["ZXI", "ZXI+"] },
-      Alto: { 2022: ["Std", "LXI"], 2023: ["VXI+"] },
-    },
+    AVEO: { 2022: ["Base", "Mid"], 2023: ["Top", "RS"] },
+    BEAT: { 2022: ["LS", "LT"], 2023: ["LTZ", "Diesel"] },
+    CRUZE: { 2021: ["LT", "LTZ"], 2022: ["LTZ"] },
+  },
+  HONDA: {
+    City: { 2021: ["SV", "V"], 2022: ["VX", "ZX"], 2023: ["ZX+", "Sport"] },
+    Civic: { 2021: ["V", "VX"], 2022: ["ZX"], 2023: ["ZX+", "Type R"] },
+    Amaze: { 2022: ["E", "S"], 2023: ["VX", "ZX"] },
+  },
+  MARUTI: {
+    Swift: { 2021: ["LXI", "VXI"], 2022: ["ZXI", "ZXI+"], 2023: ["ZXI+", "Sport"] },
+    Alto: { 2021: ["Std", "LXI"], 2022: ["VXI", "VXI+"], 2023: ["VXI+"] },
+    Dzire: { 2022: ["LXI", "VXI"], 2023: ["ZXI", "ZXI+"] },
+    Baleno: { 2022: ["Sigma", "Delta"], 2023: ["Zeta", "Alpha"] },
+  },
+  HYUNDAI: {
+    Creta: { 2021: ["E", "S"], 2022: ["SX", "SX+"], 2023: ["SX+", "SX(O)"] },
+    Venue: { 2022: ["E", "S"], 2023: ["SX", "SX(O)"] },
+    i20: { 2021: ["Magna", "Sportz"], 2022: ["Asta", "Asta(O)"] },
+  },
+  KIA: {
+    Seltos: { 2021: ["HTK+", "HTX"], 2022: ["HTX+", "GT Line"] },
+    Sonet: { 2022: ["HTE", "HTK"], 2023: ["HTX", "HTX+"] },
+  },
+  TATA: {
+    Nexon: { 2021: ["XE", "XM"], 2022: ["XZ", "XZ+"] },
+    Harrier: { 2022: ["XE", "XZ"], 2023: ["XZ+", "XZA"] },
+    Altroz: { 2022: ["XE", "XT"], 2023: ["XZ", "XZ+"] },
+  },
+  TOYOTA: {
+    Fortuner: { 2021: ["GX", "VX"], 2022: ["ZX", "ZX(O)"] },
+    Innova: { 2022: ["E", "G"], 2023: ["V", "Z"] },
+  },
+  FORD: {
+    EcoSport: { 2021: ["Ambiente", "Trend"], 2022: ["Titanium", "Titanium+"] },
+    Figo: { 2021: ["Trend", "Titanium"], 2022: ["Titanium+", "Sports"] },
+  },
+  NISSAN: {
+    Magnite: { 2022: ["XE", "XL"], 2023: ["XV", "XV Premium"] },
+    Kicks: { 2022: ["XL", "XV"], 2023: ["XV Premium", "XV Premium (O)"] },
+  },
+  RENAULT: {
+    Kwid: { 2021: ["RXT", "RXL"], 2022: ["RXZ", "RXZ Opt"] },
+    Duster: { 2021: ["RxE", "RxL"], 2022: ["RxZ", "RxZ Opt"] },
+  },
   };
 
   const handleMakerChange = (e) => {
@@ -55,7 +89,7 @@ const SearchSection = () => {
         Add new <span className="text-sky-500">Car</span>
       </h2>
       <h2 className="text-lg mb-4">Find your car by Number Plate:</h2>
-      
+
       <div className="flex items-center border rounded-lg px-3 py-2 shadow-md mb-4">
         <span className="bg-gray-200 px-3 py-2 rounded-l">IND</span>
         <input
